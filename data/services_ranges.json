@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "title": "Per-tree annual ecosystem-service ranges by size class",
+  "disclaimer": "Every range below is INDICATIVE. Ranges were assembled from published studies as wide bands that bracket the anchor figures listed per entry. Most anchors come from studies in other climates (USA, Europe, China) or from small single-site i-Tree Eco case studies in India; none is a measurement for a specific tree in Pune or Mumbai. Figures were read from abstracts, search-result excerpts and (where noted) full text; they have NOT been independently re-verified against all primary papers. Treat every number as 'indicative, to be verified'. Do not present any single value as precise.",
+  "verification_status_legend": {
+    "indicative_to_be_verified": "Range chosen to bracket published anchor figures that were read only as abstract/excerpt, or that come from a different climate. Needs checking against the primary paper before being relied on.",
+    "indicative_physical_derivation": "Range derived from a physical relationship (e.g. latent heat of evaporation) and a wide assumption about water use; the water-use assumption is unverified.",
+    "assumption_not_literature": "Project modelling convention or placeholder, not taken from a publication."
+  },
+  "size_classes": {
+    "small": {
+      "label": "Small",
+      "dbh_cm_range": [5, 20],
+      "description": "Young or small street/garden tree, roughly under 20 cm diameter at breast height (about 60 cm girth).",
+      "verification_status": "assumption_not_literature",
+      "note": "Class boundaries are a project convention so users can eyeball tree size; adjust once Urban Trees of India growth data is integrated."
+    },
+    "medium": {
+      "label": "Medium",
+      "dbh_cm_range": [20, 50],
+      "description": "Established tree, roughly 20-50 cm DBH (about 60-160 cm girth).",
+      "verification_status": "assumption_not_literature",
+      "note": "Project convention."
+    },
+    "large": {
+      "label": "Large",
+      "dbh_cm_range": [50, 150],
+      "description": "Mature/old tree with a broad crown, roughly over 50 cm DBH (over about 160 cm girth).",
+      "verification_status": "assumption_not_literature",
+      "note": "Project convention."
+    }
+  },
+  "services": [
+    {
+      "id": "cooling_small",
+      "service": "cooling",
+      "size_class": "small",
+      "unit": "kWh of heat removed per tree per year (evapotranspiration only)",
+      "low": 50,
+      "high": 500,
+      "source": "Latent heat of vaporisation (about 0.68 kWh per litre of water evaporated) applied to assumed small-tree water use of roughly 1-10 litres/day over about 100-200 transpiring days. Cross-checked loosely against the Moscow urban-tree sap-flow/latent-heat range of about 0.5-2.2 kWh/day for a mature tree (as reported in 'IoT Monitoring of Urban Tree Ecosystem Services: Possibilities and Challenges').",
+      "note": "Counts evaporative cooling only. Shade (which can be as large as or larger than evapotranspiration, e.g. Doick et al. 2013 as cited in a University of Reading study) is NOT included, so this is a conservative partial measure of cooling. Not converted to electricity saved or to street temperature. Water-use assumption for small Indian trees is not verified.",
+      "verification_status": "indicative_physical_derivation"
+    },
+    {
+      "id": "cooling_medium",
+      "service": "cooling",
+      "size_class": "medium",
+      "unit": "kWh of heat removed per tree per year (evapotranspiration only)",
+      "low": 150,
+      "high": 2500,
+      "source": "Latent heat of vaporisation (about 0.68 kWh/litre) applied to assumed medium-tree water use of roughly 3-30 litres/day over about 100-200 transpiring days. Loose cross-check: Moscow range of about 0.5-2.2 kWh/day for a mature tree (IoT monitoring paper, read via search excerpt).",
+      "note": "Evapotranspiration only; shade excluded. Very wide because published whole-tree transpiration varies by more than an order of magnitude with species, water availability and weather. Indicative only.",
+      "verification_status": "indicative_physical_derivation"
+    },
+    {
+      "id": "cooling_large",
+      "service": "cooling",
+      "size_class": "large",
+      "unit": "kWh of heat removed per tree per year (evapotranspiration only)",
+      "low": 300,
+      "high": 8000,
+      "source": "Latent heat of vaporisation (about 0.68 kWh/litre) applied to assumed large-tree water use of roughly 5-100 litres/day over about 100-200 transpiring days. Upper end loosely informed by a University of Reading study of London/Wrexham urban forests that reports average evaporative cooling of about 4.8-9.1 kW per tree while transpiring (excerpt read; conversion to annual kWh is this project's own assumption of 8 h/day).",
+      "note": "Evapotranspiration only; shade excluded. Published large-tree water use can be 'many hundreds of litres per day' in some cases (same Reading study), so the true upper bound for a very large well-watered tree may exceed this range. Temperate-climate evidence adapted to a tropical setting; treat as indicative.",
+      "verification_status": "indicative_physical_derivation"
+    },
+    {
+      "id": "rainwater_small",
+      "service": "rainwater",
+      "size_class": "small",
+      "unit": "litres of rainfall intercepted / runoff avoided per tree per year",
+      "low": 100,
+      "high": 800,
+      "source": "Anchors: i-Tree Eco Anandabana (Bhubaneswar) case study, avoided runoff 123.76 L/tree/year averaged over mostly mature trees (Indian Journal of Ecology, abstract read); Guangxi Arts University street-tree study, smallest species about 80-120 L/tree/year (Ecosystem Service Assessment of Campus Street Trees, table excerpt read).",
+      "note": "The two metrics (modelled avoided runoff vs. canopy interception) are not the same quantity and differ strongly with local rainfall. Pune (about 840 mm/year) is likely nearer the low end and Mumbai (about 2,500 mm/year, monsoon-heavy) nearer or above the high end, but no local study confirms this.",
+      "verification_status": "indicative_to_be_verified"
+    },
+    {
+      "id": "rainwater_medium",
+      "service": "rainwater",
+      "size_class": "medium",
+      "unit": "litres of rainfall intercepted / runoff avoided per tree per year",
+      "low": 300,
+      "high": 3000,
+      "source": "Anchors: Guangxi street trees, typical species about 550-1,400 L/tree/year (excerpt); USDA Tropical Community Tree Guide (PSW-GTR-216) reporting about 150 gallons (about 570 L) per tree in canopied areas of Sacramento.",
+      "note": "Wide band reflects metric differences and rainfall dependence. Not verified against a Pune/Mumbai measurement.",
+      "verification_status": "indicative_to_be_verified"
+    },
+    {
+      "id": "rainwater_large",
+      "service": "rainwater",
+      "size_class": "large",
+      "unit": "litres of rainfall intercepted / runoff avoided per tree per year",
+      "low": 1000,
+      "high": 8000,
+      "source": "Anchors: Honolulu inventory, 43,000 trees intercepting 35 million gallons per year, i.e. about 814 gallons (about 3,100 L) per tree on average (USDA Tropical Community Tree Guide, PSW-GTR-216; per-tree figure computed by this project); Guangxi largest-crown species about 2,200 L/tree/year (excerpt).",
+      "note": "Upper bound (8,000 L) is a project assumption to allow for a large evergreen crown in a heavy-monsoon city such as Mumbai; it is NOT taken from a published per-tree figure. Treat as indicative.",
+      "verification_status": "indicative_to_be_verified"
+    },
+    {
+      "id": "air_small",
+      "service": "air",
+      "size_class": "small",
+      "unit": "kg of air pollutants removed per tree per year",
+      "low": 0.05,
+      "high": 0.4,
+      "source": "Anchor: Sacramento County urban forest average of roughly 0.27 kg pollutants per tree per year (1,607 tons of pollutants over about 6 million trees; USDA/CUFR research summary, ratio computed by this project). Small trees have less leaf area so are expected to be below the average.",
+      "note": "Scaled down from an average by assumption; no per-size-class Indian measurement used. Pollutant mix (ozone, PM10, NO2, SO2) is US-specific. Delhi i-Tree results were not used as an anchor because the reported Deer Park total (30 t/year for 250 trees, about 120 kg per tree) looks implausible and is likely a unit or reporting error.",
+      "verification_status": "indicative_to_be_verified"
+    },
+    {
+      "id": "air_medium",
+      "service": "air",
+      "size_class": "medium",
+      "unit": "kg of air pollutants removed per tree per year",
+      "low": 0.2,
+      "high": 1.0,
+      "source": "Anchors: Sacramento average of roughly 0.27 kg/tree/year (computed from USDA/CUFR summary); an Atmospheric Environment modelling paper (PII S1352-2310(97)00180-5; authors/title not confirmed) estimating a live tree 30 years after planting in Sacramento removing about 1.2 kg/year in total (ozone 0.66 + PM10 0.4 + NO2 0.13 + SO2 0.02 kg; excerpt read).",
+      "note": "Indicative band between the city average and a mature-tree estimate. US pollutant concentrations differ from Indian cities; higher ambient pollution could raise uptake, but that is not quantified here.",
+      "verification_status": "indicative_to_be_verified"
+    },
+    {
+      "id": "air_large",
+      "service": "air",
+      "size_class": "large",
+      "unit": "kg of air pollutants removed per tree per year",
+      "low": 0.5,
+      "high": 2.5,
+      "source": "Anchor: modelled live tree 30 years after planting in Sacramento removing about 1.2 kg/year in total (Atmospheric Environment, PII S1352-2310(97)00180-5; excerpt read, authors/title not confirmed). Upper bound is roughly double that to allow for older trees and higher Indian pollution levels.",
+      "note": "Upper bound (2.5 kg) is a project assumption, not a published per-tree figure. Indicative only.",
+      "verification_status": "indicative_to_be_verified"
+    },
+    {
+      "id": "carbon_small",
+      "service": "carbon",
+      "size_class": "small",
+      "unit": "kg CO2 sequestered per tree per year",
+      "low": 5,
+      "high": 30,
+      "source": "Anchor: USDA Forest Service (Gen. Tech. Rep. PSW-GTR-171 and the Sacramento CO2 study) reports about 16 kg CO2/year for small, slow-growing trees of 8-15 cm DBH (Chicago-derived growth data).",
+      "note": "Temperate-climate anchor; tropical trees may grow faster or slower depending on species and care. Gross annual sequestration only; carbon already stored in the tree (released if felled and burned or left to decay) is a separate one-time quantity and is not counted here.",
+      "verification_status": "indicative_to_be_verified"
+    },
+    {
+      "id": "carbon_medium",
+      "service": "carbon",
+      "size_class": "medium",
+      "unit": "kg CO2 sequestered per tree per year",
+      "low": 25,
+      "high": 120,
+      "source": "Anchors: USDA average sequestration of 22-43 kg CO2/tree/year (Chicago and Sacramento urban forests); i-Tree Eco Anandabana, Bhubaneswar: 8.63 t C/year over 484 trees = about 17.8 kg C = about 65 kg CO2 per tree per year (Indian Journal of Ecology abstract; per-tree figure and C-to-CO2 conversion at 44/12 computed by this project); i-Tree Eco Deer Park, Delhi (EGU25-833 abstract): 3.196 t C/year over 250 trees = about 12.8 kg C = about 47 kg CO2 per tree per year (computed by this project).",
+      "note": "Another Deer Park report (a dissertation hosted by i-Tree) gives 91.69 t C/year for 415 trees, about 221 kg C (about 810 kg CO2) per tree, which is about 17 times higher than the abstract's per-tree figure. The discrepancy is unresolved, so the Delhi anchors are used with caution and the high end is not extended to match that outlier.",
+      "verification_status": "indicative_to_be_verified"
+    },
+    {
+      "id": "carbon_large",
+      "service": "carbon",
+      "size_class": "large",
+      "unit": "kg CO2 sequestered per tree per year",
+      "low": 100,
+      "high": 360,
+      "source": "Anchor: USDA Forest Service reports annual CO2 sequestration of about 340-360 kg per tree for the largest trees (over 76 cm DBH, max growth rate; PSW-GTR-171 and the Sacramento CO2 study).",
+      "note": "Upper end is taken from the USDA maximum; the lower end (100 kg) is a project assumption for slower-growing or stressed old trees. Very old trees can have low net sequestration; the range is wide on purpose.",
+      "verification_status": "indicative_to_be_verified"
+    }
+  ],
+  "growth_classes": {
+    "description": "Years for a replacement tree (planted as a sapling of at least six feet, as required by Maharashtra Act s.8(5)(a)) to reach each size class. Used for the replacement-gap simulation. Each entry is [fast_years, slow_years].",
+    "verification_status": "assumption_not_literature",
+    "note": "These are generic arboricultural expectations chosen as wide bands, NOT values from the Urban Trees of India database. Replace with UTI growth curves once that database is integrated. Years are measured from planting and assume the sapling survives and is cared for.",
+    "classes": {
+      "fast": {
+        "label": "Fast-growing species",
+        "years_to_size_class": {"small": [2, 4], "medium": [8, 15], "large": [20, 35]}
+      },
+      "moderate": {
+        "label": "Moderate-growing species",
+        "years_to_size_class": {"small": [3, 6], "medium": [12, 22], "large": [30, 50]}
+      },
+      "slow": {
+        "label": "Slow-growing, long-lived species",
+        "years_to_size_class": {"small": [4, 8], "medium": [18, 30], "large": [45, 80]}
+      }
+    }
+  },
+  "references": [
+    {"id": "usda_psw_gtr171", "citation": "Carbon dioxide sequestration chapter, USDA Forest Service Gen. Tech. Rep. PSW-GTR-171 (authors not confirmed).", "url": "https://www.fs.usda.gov/psw/publications/documents/psw_gtr171/psw_gtr171.pdf", "read_as": "search excerpt"},
+    {"id": "usda_sacramento_co2", "citation": "Atmospheric carbon dioxide reduction by Sacramento's urban forest, USDA Forest Service.", "url": "https://research.fs.usda.gov/download/treesearch/61659.pdf", "read_as": "search excerpt"},
+    {"id": "atmos_env_sacramento_air", "citation": "Atmospheric Environment paper on tree air-pollutant uptake and planting cost-effectiveness in Sacramento (PII S1352-2310(97)00180-5); exact authors/title not confirmed.", "url": "https://research.fs.usda.gov/download/treesearch/60566.pdf", "read_as": "search excerpt"},
+    {"id": "usda_tropical_ctg", "citation": "Tropical Community Tree Guide: Benefits, Costs and Strategic Planting, USDA Forest Service PSW-GTR-216.", "url": "https://www.itreetools.org/documents/446/PSW_GTR216_Tropical_CTG.pdf", "read_as": "search excerpt"},
+    {"id": "itree_bhubaneswar", "citation": "Ecosystem Services and Financial Benefits from Urban Green Spaces using the i-Tree Eco Model: A Case Study of Anandabana, Bhubaneswar. Indian Journal of Ecology.", "url": "https://www.indianjecol.org/published-articles/67", "read_as": "abstract"},
+    {"id": "itree_delhi_deerpark_egu", "citation": "Assessing the Ecosystem Services of Urban Green Space Based on Vegetation Model: Nature-Based Solution Approach in Delhi, India (Deer Park). EGU25-833.", "url": "https://meetingorganizer.copernicus.org/EGU25/EGU25-833.html", "read_as": "abstract"},
+    {"id": "itree_delhi_deerpark_dissertation", "citation": "Dissertation on carbon storage and sequestration in Deer Park, Hauz Khas, New Delhi using i-Tree Eco (hosted on itreetools.org).", "url": "https://www.itreetools.org/documents/1082/Ankita_Dissertation.pdf", "read_as": "search excerpt"},
+    {"id": "guangxi_street_trees", "citation": "Ecosystem Service Assessment of Campus Street Trees for Urban Resilience: A Case Study from Guangxi Arts University.", "url": "https://exa.ai/library/publication/yctbp07xdqj", "read_as": "search excerpt"},
+    {"id": "reading_evaporative_cooling", "citation": "Influence of evaporative cooling by urban forests on cooling demand in cities. University of Reading (author pre-print).", "url": "https://centaur.reading.ac.uk/74637/1/AuthorFinalPrePrintVersion.pdf", "read_as": "search excerpt"},
+    {"id": "iot_urban_tree_services", "citation": "IoT Monitoring of Urban Tree Ecosystem Services: Possibilities and Challenges.", "url": "https://exa.ai/library/publication/kgn08l4vct9", "read_as": "search excerpt (the per-day kWh range was seen only in a search summary, not confirmed in the full text)"}
+  ],
+  "not_yet_integrated": [
+    "Thiruvananthapuram i-Tree Eco: no per-tree annual carbon, runoff or pollution-removal figures were found; only biomass/carbon-storage studies of sacred groves, which are not comparable. No Thiruvananthapuram anchor is used.",
+    "Urban Trees of India (UTI) database growth curves: not yet downloaded or used.",
+    "Meta + WRI canopy height maps: not yet used."
+  ]
+}

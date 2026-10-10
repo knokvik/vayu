@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "disclaimer": "City profiles give context and default inputs. Items marked verified_primary were read directly from the cited primary document by this project. Everything else is labelled in its own verification_status. Survival figures come from court-monitored inspections and news reports of specific projects and are NOT city-wide statistics.",
+  "survival_presets": {
+    "mumbai_like": {
+      "label": "Mumbai-like (poor aftercare)",
+      "point": 0.37,
+      "low": 0.35,
+      "high": 0.5,
+      "meaning": "Share of replacement trees still alive at audit. The point value 0.37 is the preset requested by the project owner. The band 0.35-0.50 spans reported outcomes for Mumbai Metro Line 3 mitigation.",
+      "source": "Hindustan Times, 'Aqua Line: Progress at a green price' (20 Dec 2025): only 35% of transplanted trees survived; roughly half of 20,460 compensatory saplings had survived per forest-official inspection reported to the Supreme Court (27 Oct 2025); a Bombay High Court committee found 61% of 1,643 transplanted trees dead by Nov 2019 (about 39% alive).",
+      "verification_status": "secondary_source_read_news_report_of_court_monitored_inspections",
+      "note": "Mixes transplanted mature trees (about 35-39% alive) and saplings (about 50% alive). Survival of saplings after the full seven-year period required by law may differ. Metro Line 3 is one project, not all of Mumbai."
+    },
+    "chennai_like": {
+      "label": "Chennai-like (some aftercare)",
+      "point": 0.63,
+      "low": 0.55,
+      "high": 0.7,
+      "meaning": "Share of replacement trees still alive at audit. The point value 0.63 is the preset requested by the project owner and matches a reported figure for transplanted trees.",
+      "source": "Citizen Matters / The News Minute (1 Jul 2026), 'Chennai to lose thrice as many trees as originally estimated for Metro Phase II': 63% of 1,615 transplanted trees survived, per data shared by Chennai Metro Rail Ltd.",
+      "verification_status": "secondary_source_read_news_report_band_is_project_assumption",
+      "note": "63% is a single reported figure for transplants. The 0.55-0.70 band around it is a project assumption (about +/-8 points), not a published range. The same article notes there is no public database on the survival of compensatory saplings."
+    }
+  },
+  "default_survival_as_promised": {
+    "point": 1.0,
+    "low": 1.0,
+    "high": 1.0,
+    "note": "'As promised' assumes every replacement tree lives unless the user states a different promised survival.",
+    "verification_status": "assumption_not_literature"
+  },
+  "cities": {
+    "pune": {
+      "id": "pune",
+      "name": "Pune",
+      "state": "Maharashtra",
+      "centre_lat_lon": [18.5204, 73.8567],
+      "centre_verification_status": "general_knowledge_approximate",
+      "rainfall": {
+        "annual_mm": 841.2,
+        "rainy_days_per_year": 51.3,
+        "june_to_september_mm": 670.6,
+        "station": "Pune (IMD station 43063)",
+        "period": "1991-2020 normal",
+        "source": "India Meteorological Department, Climatological Tables 1991-2020 (Pune station page).",
+        "verification_status": "verified_primary_read_from_table",
+        "note": "A single-station normal, not a city-wide average. The June-September total is the sum of the four monthly normals computed by this project."
+      },
+      "heat_context": {
+        "annual_mean_daily_max_c": 31.9,
+        "hottest_month": "April",
+        "hottest_month_mean_daily_max_c": 37.9,
+        "record_high_c": 43.3,
+        "station": "Pune (IMD station 43063)",
+        "period": "1991-2020 normal; record high is the highest on the station's long record",
+        "source": "India Meteorological Department, Climatological Tables 1991-2020 (Pune station page).",
+        "verification_status": "verified_primary_read_from_table",
+        "note": "Values were extracted from a text conversion of a PDF table; a visual check against the PDF is recommended. Air temperature at the station, not a measure of urban heat-island intensity."
+      },
+      "survival": {
+        "default_preset": null,
+        "realistic": {
+          "point": 0.5,
+          "low": 0.37,
+          "high": 0.63
+        },
+        "source": "No Pune-specific survival audit was found. The range is bounded by the Mumbai-like (0.37) and Chennai-like (0.63) presets; the 0.5 point is simply the midpoint.",
+        "verification_status": "indicative_to_be_verified",
+        "note": "Replace with a Pune-specific audit (Pune Municipal Corporation Tree Authority records, RTI replies, NGT orders) when available."
+      },
+      "compensatory_planting": {
+        "legal_rule": "After permission to fell, the applicant must plant a number of trees equal to the estimated age of each felled tree, each at least six feet tall, within 15 days (extension up to 15 days); planted trees must survive at least seven years and any mortality must be replaced with an equal number of new trees. Applicants who cannot plant must deposit at least the valuation of the trees. New trees are to be geo-tagged and monitored.",
+        "legal_source": "Maharashtra (Urban Areas) Protection and Preservation of Trees Act, 1975, s.8(5)(a), s.8(5A) and s.8(5C), as amended (consolidated text published on the Maharashtra Government/India Code portal; read directly).",
+        "legal_verification_status": "verified_primary_read_from_act_text",
+        "legal_note": "Because the statutory number depends on each tree's estimated age, there is no single fixed ratio in law; the tree officer fixes the number in the permission. Check the current amended text and any 2025-26 notification before relying on this summary. This is not legal advice.",
+        "default_promised_ratio": 4,
+        "default_promised_ratio_note": "Calculator pre-fill only. Based on the Mumbai Metro Line 3 figure of about 20,460 compensatory saplings for 4,941 felled trees (about 4.1 to 1) and reused here as a placeholder because no Pune project figure was verified. Users should overwrite it with the ratio stated in their project's permission.",
+        "default_promised_ratio_verification_status": "indicative_to_be_verified"
+      },
+      "species_groups": {
+        "verification_status": "indicative_to_be_verified",
+        "note": "Growth class assignments are generic expectations. Species are common examples, not a Pune tree-census result. Verify against the Urban Trees of India database and the local tree census; no shares of the city canopy are claimed.",
+        "groups": [
+          {"id": "pune_fast_street", "label": "Fast-growing street and avenue trees", "growth_class": "fast", "common_examples": ["Delonix regia (gulmohar)", "Peltophorum pterocarpum (copperpod)", "Pongamia pinnata"]},
+          {"id": "pune_moderate_native", "label": "Moderate-growing native shade trees", "growth_class": "moderate", "common_examples": ["Azadirachta indica (neem)", "Samanea saman (rain tree)", "Syzygium cumini (jamun)"]},
+          {"id": "pune_slow_heritage", "label": "Slow-growing long-lived heritage trees", "growth_class": "slow", "common_examples": ["Ficus benghalensis (banyan)", "Ficus religiosa (peepal)", "Mangifera indica (mango)"]}
+        ],
+        "default_group": "pune_moderate_native"
+      }
+    },
+    "mumbai": {
+      "id": "mumbai",
+      "name": "Mumbai",
+      "state": "Maharashtra",
+      "centre_lat_lon": [19.076, 72.8777],
+      "centre_verification_status": "general_knowledge_approximate",
+      "rainfall": {
+        "annual_mm": 2502.3,
+        "rainy_days_per_year": 78.6,
+        "june_to_september_mm": 2390.5,
+        "station": "Mumbai Santacruz (IMD station 43003)",
+        "period": "1991-2020 normal",
+        "source": "India Meteorological Department, Climatological Tables 1991-2020 (Mumbai Santacruz station page).",
+        "verification_status": "verified_primary_read_from_table",
+        "note": "A single-station normal, not a city-wide average. The June-September total is the sum of the four monthly normals computed by this project."
+      },
+      "heat_context": {
+        "annual_mean_daily_max_c": 32.3,
+        "hottest_month": "May",
+        "hottest_month_mean_daily_max_c": 33.7,
+        "record_high_c": 42.2,
+        "station": "Mumbai Santacruz (IMD station 43003)",
+        "period": "1991-2020 normal; record high is the highest on the station's long record",
+        "source": "India Meteorological Department, Climatological Tables 1991-2020 (Mumbai Santacruz station page).",
+        "verification_status": "verified_primary_read_from_table",
+        "note": "Values were extracted from a text conversion of a PDF table; a visual check against the PDF is recommended. Coastal humidity makes heat stress high even where air temperature is moderate; that effect is not quantified here."
+      },
+      "survival": {
+        "default_preset": "mumbai_like",
+        "realistic": {
+          "point": 0.37,
+          "low": 0.35,
+          "high": 0.5
+        },
+        "source": "See survival_presets.mumbai_like (Hindustan Times, 20 Dec 2025, reporting Supreme Court and Bombay High Court committee findings on Metro Line 3).",
+        "verification_status": "secondary_source_read_news_report_of_court_monitored_inspections",
+        "note": "Project-specific outcomes used as a city-level proxy; not a city-wide audit."
+      },
+      "compensatory_planting": {
+        "legal_rule": "After permission to fell, the applicant must plant a number of trees equal to the estimated age of each felled tree, each at least six feet tall, within 15 days (extension up to 15 days); planted trees must survive at least seven years and any mortality must be replaced with an equal number of new trees. Applicants who cannot plant must deposit at least the valuation of the trees. New trees are to be geo-tagged and monitored.",
+        "legal_source": "Maharashtra (Urban Areas) Protection and Preservation of Trees Act, 1975, s.8(5)(a), s.8(5A) and s.8(5C), as amended (consolidated text published on the Maharashtra Government/India Code portal; read directly).",
+        "legal_verification_status": "verified_primary_read_from_act_text",
+        "legal_note": "Because the statutory number depends on each tree's estimated age, there is no single fixed ratio in law; the tree officer fixes the number in the permission. Check the current amended text and any 2025-26 notification before relying on this summary. This is not legal advice.",
+        "default_promised_ratio": 4,
+        "default_promised_ratio_note": "Calculator pre-fill only. Mumbai Metro Line 3: 4,941 trees felled and about 20,460 compensatory saplings claimed (about 4.1 to 1), per the Hindustan Times report of 20 Dec 2025. Users should overwrite it with the ratio stated in their project's permission.",
+        "default_promised_ratio_verification_status": "secondary_source_read_news_report"
+      },
+      "species_groups": {
+        "verification_status": "indicative_to_be_verified",
+        "note": "Growth class assignments are generic expectations. Species are common examples, not a Mumbai tree-census result. Verify against the Urban Trees of India database and the BMC tree census; no shares of the city canopy are claimed.",
+        "groups": [
+          {"id": "mumbai_fast_street", "label": "Fast-growing street and avenue trees", "growth_class": "fast", "common_examples": ["Delonix regia (gulmohar)", "Peltophorum pterocarpum (copperpod)", "Pongamia pinnata"]},
+          {"id": "mumbai_moderate_native", "label": "Moderate-growing native and coastal shade trees", "growth_class": "moderate", "common_examples": ["Samanea saman (rain tree)", "Terminalia catappa (country almond)", "Azadirachta indica (neem)"]},
+          {"id": "mumbai_slow_heritage", "label": "Slow-growing long-lived heritage trees", "growth_class": "slow", "common_examples": ["Ficus benghalensis (banyan)", "Ficus religiosa (peepal)", "Mangifera indica (mango)"]}
+        ],
+        "default_group": "mumbai_moderate_native"
+      }
+    }
+  }
+}
