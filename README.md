@@ -46,6 +46,35 @@ uvicorn app.main:app --reload --port 8000
 # health check: http://127.0.0.1:8000/health
 ```
 
+Run the backend tests:
+
+```bash
+cd backend && . .venv/bin/activate
+python -m pytest -q
+```
+
+API (interactive docs at http://127.0.0.1:8000/docs):
+
+| Endpoint | Purpose |
+|----------|---------|
+| `GET /health` | Liveness check |
+| `GET /city-profiles` | Pune and Mumbai profiles, survival presets (`mumbai_like` 0.37, `chennai_like` 0.63), growth classes, size classes |
+| `POST /calculate` | Annual loss ranges plus the 40-year replacement-gap simulation |
+
+Example:
+
+```bash
+curl -s -X POST http://127.0.0.1:8000/calculate \
+  -H 'content-type: application/json' \
+  -d '{"city":"pune","tree_counts":{"small":100,"medium":250,"large":179},"promised_ratio":4}'
+```
+
+Request fields: `city`; either `tree_counts` or `total_trees` + `size_mix`;
+optional `promised_ratio`, `promised_survival`, `realistic_survival` (number or
+`{low, high}`), `survival_preset`, `growth_class` (`fast|moderate|slow`),
+`horizon_years`. Every result group carries its `sources` and
+`verification_status`.
+
 Frontend:
 
 ```bash
@@ -73,7 +102,8 @@ not been checked against the primary document, the data files say so in a
 | Legal and survival context | Maharashtra (Urban Areas) Protection and Preservation of Trees Act, 1975, plus NGT / Supreme Court reports | Realistic survival presets and compensatory planting rules |
 
 Other literature used as range anchors is cited per entry in
-`data/services_ranges.json` (added in a later commit).
+`data/services_ranges.json`. Figures that could not be verified against a primary
+source are labelled `indicative_to_be_verified` there.
 
 ## Status
 
